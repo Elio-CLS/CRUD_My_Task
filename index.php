@@ -1,8 +1,6 @@
 <?php
-// Error_log
+// INCLUIR ARCHIVOS
 include('includes/errors.php');
-// Conexion db
-include('sql/conexion.php');
 /*
 *
 *
@@ -35,11 +33,36 @@ error_log("index");
                     <input type="submit" class="btn btn-success btn-block" name="btn_save_task" value="Guardar Task">
                 </form>
             </div>
+            <br>
+            <!-- SESSION MENSAJES -->
+            <?php session_start(); ?>
+            <?php if(isset($_SESSION['mensaje'])){ ?>
+                <div class="alert <?php echo $_SESSION['msj_color'];?> alert-dismissible fade show" role="alert">
+
+                    <?php echo $_SESSION['mensaje']; ?>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    
+                </div>
+            <?php session_unset(); } ?>
         </div>
 
         <!-- Formulario muestra datos-->
         <div class="col-md-8">
-        
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Descripción</th>
+                            <th>Fecha creación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Contenido de la tabla-->
+                        <?php include('view/view_task.php'); ?>
+                    </tbody>
+                </table>
         </div> 
     </div>
 

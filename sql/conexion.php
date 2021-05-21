@@ -1,6 +1,7 @@
 <?php 
+session_start();
 
-$db_conexion = 'mysql: dbname=db_task ; host=localhost';
+$db_conexion = 'mysql:dbname=db_task;host=localhost';
 $us ='root';
 $ps = '';
 
